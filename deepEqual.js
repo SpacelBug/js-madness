@@ -1,13 +1,24 @@
-// Сравнение объектов с без учета порядка его элементов
-//
-// firstObject - Первый объект
-// secondObject - Второй объект
-// ignoreList - Список ключей, которые не будут учитываться при сравнении
+/**
+ * Сравнение объектов без учета порядка его элементов
+ *
+ * firstObject - Первый объект
+ * secondObject - Второй объект
+ * ignoreList - Список ключей, которые не будут учитываться при сравнении
+ *
+ * Возвращает ложь, если один из аргументов (firstObject, secondObject) не является объектом
+ */
 function deepEqual(firstObject, secondObject, ignoreList=[]){
-    console.debug('Start: ', firstObject, secondObject)
 
     firstObject = structuredClone(firstObject)
     secondObject = structuredClone(secondObject)
+
+    console.debug('Start: ', firstObject, secondObject)
+
+    if ((typeof firstObject !== 'object') || (typeof secondObject !== 'object')) {
+        console.debug('one of params is not an Object')
+        console.debug('first: ', typeof firstObject, 'second: ', typeof secondObject)
+        return false
+    }
 
     for (let firstObjectKey in firstObject){
         for (let secondObjectKey in secondObject){
