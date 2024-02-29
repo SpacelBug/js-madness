@@ -53,9 +53,16 @@ function deepEqual(firstObject, secondObject, ignoreList=[]){
                     }
 
                 } else if (!ignoreList.includes(firstObjectKey)) {
-                    if (firstObject[firstObjectKey] !== secondObject[secondObjectKey]) {
-                        console.debug('False keys: ', firstObjectKey, secondObjectKey)
-                        console.debug(firstObject[firstObjectKey], secondObject[secondObjectKey])
+                    if (Object.prototype.toString.call(firstObject[firstObjectKey]) === '[object Date]') {
+                        if (firstObject[firstObjectKey].getTime() !== secondObject[secondObjectKey].getTime()) {
+                            // console.debug('False keys: ', firstObjectKey, secondObjectKey)
+                            // console.debug(firstObject[firstObjectKey], secondObject[secondObjectKey])
+                            return false
+                        }
+                    }
+                    else if (firstObject[firstObjectKey] !== secondObject[secondObjectKey]) {
+                        // console.debug('False keys: ', firstObjectKey, secondObjectKey)
+                        // console.debug(firstObject[firstObjectKey], secondObject[secondObjectKey])
                         return false
                     } else {
                         console.debug('Keys is equal: ', firstObjectKey, secondObjectKey)
