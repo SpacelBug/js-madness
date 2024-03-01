@@ -13,5 +13,33 @@ function secondsToHMS(seconds) {
 
   return timeStr;
 }
+/**
+ * Приводит время к строке указанного формата
+ * формат указывается с помощью ключевых слов
+ * (year, month, date, hour, minutes, seconds...)
+ * пример указания формата "year-month-date hour:minutes:seconds"
+ */
+function dateTimeToStr(dateTime, format) {
+  let dateTimeObject = {
+    year: dateTime.getFullYear(),
+    month: dateTime.getMonth()+1,
+    date: dateTime.getDate(),
+    hours: dateTime.getHours(),
+    minutes: dateTime.getMinutes(),
+    seconds: dateTime.getSeconds(),
+    milliseconds: dateTime.getMilliseconds()
+  }
 
-export {secondsToHMS}
+  let dateTimeStr = format
+
+  for (let key in dateTimeObject) {
+    if (Number(dateTimeObject[key]) < 10) {
+      dateTimeObject[key] = '0' + dateTimeObject[key]
+    }
+    dateTimeStr = dateTimeStr.replace(key, dateTimeObject[key])
+  }
+
+  return dateTimeStr
+}
+
+export {secondsToHMS, dateTimeToStr}
