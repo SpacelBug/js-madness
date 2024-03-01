@@ -1,3 +1,9 @@
+/**
+ * Проверяет содержит ли mainPeriod belongPeriod
+ * @param mainPeriod [date, date]
+ * @param belongPeriod [date, date]
+ * @returns {{result: string, reformedData}|{false: string}|{result: string, belongPeriod}}
+ */
 function timePeriodBelongs (mainPeriod, belongPeriod) {
     let mainPeriodStart = mainPeriod[0]
     let mainPeriodEnd = mainPeriod[1]
