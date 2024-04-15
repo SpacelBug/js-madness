@@ -1,12 +1,12 @@
 function keysIsEmpty(object) {
   let flag = true
 
-  if (!Array.isArray(object)) {
+  if ((object instanceof Array) || (object instanceof Set)) {
 
-    for (let key in object) {
-      if (object[key] !== null) {
-        if (typeof object[key] === 'object') {
-          flag = keysIsEmpty(object[key])
+    for (let elem of object) {
+      if (elem !== null) {
+        if (typeof elem === 'object') {
+          flag = keysIsEmpty(elem)
         } else {
           return false
         }
@@ -15,10 +15,10 @@ function keysIsEmpty(object) {
 
   } else {
 
-    for (let elem of object) {
-      if (elem !== null) {
-        if (typeof elem === 'object') {
-          flag = keysIsEmpty(elem)
+    for (let key in object) {
+      if (object[key] !== null) {
+        if (typeof object[key] === 'object') {
+          flag = keysIsEmpty(object[key])
         } else {
           return false
         }
