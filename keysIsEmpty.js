@@ -6,7 +6,7 @@ function keysIsEmpty(object) {
       if (typeof  object[key] === 'object') {
         flag = keysIsEmpty(object[key])
       } else {
-        flag = false
+        return false
       }
     }
   }
