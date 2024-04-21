@@ -1,3 +1,9 @@
+/**
+ * Проверяет являются ли все элементы объекта или списка пустыми
+ *
+ * @param object
+ * @returns {boolean}
+ */
 function keysIsEmpty(object) {
   let flag = true
 
