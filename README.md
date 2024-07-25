@@ -1,11 +1,17 @@
 # js-madness
 Here I store my JS scripts.
 
+## findArrayInArray
+### RUS
+Поиск элементов одного массива в другом
+### ENG
+Finding elements of one array in another
+
 ## deepEqual
 ### RUS
 Сравнение объектов без учета порядка его элементов
 ### ENG
-compare two js object 
+Compare two js object 
 
 ## formatter
 ### RUS
