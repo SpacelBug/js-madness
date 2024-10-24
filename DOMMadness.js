@@ -23,5 +23,16 @@ function cursorRelativeElement(cursorClientX, cursorClientY, target) {
 
   return positionArr.length !== 0 ? positionArr : ['inside']
 }
+/**
+ * Return object which tell u where is empty space from an event
+ *
+ * @return {{verticalDirection: string, horizontalDirection: string}}
+ */
+function freeSpaceRelativeEvent() {
+  let verticalDirection = event.clientY > (window.innerHeight / 2) ? 'toBottom' : 'toTop'
+  let horizontalDirection = event.clientX < (window.innerWidth / 2) ? 'toLeft' : 'toRight'
 
-export {cursorRelativeElement}
+  return ({'verticalDirection': verticalDirection, 'horizontalDirection': horizontalDirection})
+}
+
+export {cursorRelativeElement, freeSpaceRelativeEvent}
