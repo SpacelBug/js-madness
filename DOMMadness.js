@@ -7,7 +7,7 @@
  * @returns {*[]|string['inside']}
  */
 function cursorRelativeElement(cursorClientX, cursorClientY, target) {
-  let position = {right: false, left: false, top: false, bottom: false}
+  let position = { right: false, left: false, top: false, bottom: false }
   let positionArr = []
 
   position.top = cursorClientY < target.getBoundingClientRect().top
@@ -21,7 +21,7 @@ function cursorRelativeElement(cursorClientX, cursorClientY, target) {
     }
   }
 
-  return positionArr.length !== 0 ? positionArr : ['inside']
+  return positionArr.length !== 0 ? positionArr : ["inside"]
 }
 /**
  * Return object which tell u where is empty space from an event
@@ -29,10 +29,35 @@ function cursorRelativeElement(cursorClientX, cursorClientY, target) {
  * @return {{verticalDirection: string, horizontalDirection: string}}
  */
 function freeSpaceRelativeEvent() {
-  let verticalDirection = event.clientY > (window.innerHeight / 2) ? 'toBottom' : 'toTop'
-  let horizontalDirection = event.clientX < (window.innerWidth / 2) ? 'toLeft' : 'toRight'
+  let verticalDirection =
+    event.clientY > window.innerHeight / 2 ? "toBottom" : "toTop"
+  let horizontalDirection =
+    event.clientX < window.innerWidth / 2 ? "toLeft" : "toRight"
 
-  return ({'verticalDirection': verticalDirection, 'horizontalDirection': horizontalDirection})
+  return {
+    verticalDirection: verticalDirection,
+    horizontalDirection: horizontalDirection,
+  }
 }
 
-export {cursorRelativeElement, freeSpaceRelativeEvent}
+/**
+ * Collect all audio links on the page and log them to the console
+ */
+function collectAudioLinks() {
+  const audioLinks = []
+
+  document.querySelectorAll("audio").forEach((audio) => {
+    if (audio.src) {
+      audioLinks.push(audio.src)
+    }
+    audio.querySelectorAll("source").forEach((source) => {
+      if (source.src) {
+        audioLinks.push(source.src)
+      }
+    })
+  })
+
+  console.log(audioLinks)
+}
+
+export { cursorRelativeElement, freeSpaceRelativeEvent, collectAudioLinks }
